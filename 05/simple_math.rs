@@ -1,6 +1,6 @@
 use std::io;
 use std::io::Write;
-use std::process;
+use std::str::FromStr;
 
 fn main() {
     let mut first_number = String::new();
@@ -14,12 +14,7 @@ fn main() {
         .read_line(&mut first_number)
         .expect("Failed to read input");
 
-    let result = first_number.trim().parse::<f64>();
-
-    match result {
-        Ok(_ok) => parsed_numbers.push(first_number.trim().parse::<f64>().unwrap()),
-        Err(_e) => input_error(),
-    }
+    parsed_numbers.push(f64::from_str(&first_number.trim()).expect("Please enter a valid number."));
 
     print!("What is the second number? ");
     flush_io();
@@ -28,12 +23,8 @@ fn main() {
         .read_line(&mut second_number)
         .expect("Failed to read input");
 
-    let result = second_number.trim().parse::<f64>();
-
-    match result {
-        Ok(_ok) => parsed_numbers.push(second_number.trim().parse::<f64>().unwrap()),
-        Err(_e) => input_error(),
-    }
+    parsed_numbers
+        .push(f64::from_str(&second_number.trim()).expect("Please enter a valid number."));
 
     println!(
         "{} + {} = {}",
@@ -63,9 +54,4 @@ fn main() {
 
 fn flush_io() {
     io::stdout().flush().expect("");
-}
-
-fn input_error() {
-    println!("Invalid number");
-    process::exit(0);
 }
