@@ -1,0 +1,12 @@
+[package]
+name = "retirement_calculator"
+version = "0.1.0"
+authors = ["Patrick McSweeny <patmcsweeny@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+chrono = "0.4"
+
+[[bin]]
+name = "retirement_calculator"
+path = "retirement_calculator.rs"
