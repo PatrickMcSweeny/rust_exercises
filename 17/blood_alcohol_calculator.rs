@@ -26,7 +26,7 @@ fn main() {
         .read_line(&mut gender)
         .expect("Failed to read input.");
 
-    gender = String::from(gender.trim().to_lowercase());
+    gender = gender.trim().to_lowercase();
 
     let ratio = match gender.as_str() {
         "m" => 0.73,
